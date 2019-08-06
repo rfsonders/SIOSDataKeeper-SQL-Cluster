@@ -1,0 +1,16 @@
+#pragma namespace("\\\\.\\root\\microsoft\\windows\\DesiredStateConfiguration")
+
+[ClassVersion("1.0.0"), FriendlyName("cWaitForClusterGroup")] 
+class SIOS_WaitForClusterGroup : OMI_BaseResource
+{
+    [key, Description("Name of the clustergroup")] 
+    string Name;
+       
+    [Write, Description("Interval to check the clustergroup existency")] 
+    Uint64 RetryIntervalSec;
+    
+    [Write, Description("Maximum number of retries to check clustergroup existency")] 
+    Uint32 RetryCount;      
+};
+
+
