@@ -1,4 +1,4 @@
-# FOrked for Azure Stack POC deployments
+# Forked for Azure Stack POC deployments
 # SQL Server 2014 Failover Cluster Instance with SIOS DataKeeper<br/>Azure Deployment Template
 
 This template will create a high availability/disaster recovery (HA/DR) solution with the following features:
