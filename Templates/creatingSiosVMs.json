@@ -71,9 +71,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), '0')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license",
-        "publisher": "sios_datakeeper",
-        "product": "sios-datakeeper-8"
+        "name": "2.127.20190521",
+        "publisher": "MicrosoftWindowsServer",
+        "product": "WindowsServer"
       },
       "properties": {
         "hardwareProfile": {
@@ -89,9 +89,9 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "sios_datakeeper",
-            "offer": "sios-datakeeper-8",
-            "sku": "bring_your_own_license",
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2008-R2-SP1",
             "version": "latest"
           },
           "osDisk": {
@@ -109,7 +109,7 @@
               },
               "name": "[concat(variables('siosVMNamePrefix'), '0','-datadisk')]",
               "caching": "None",
-              "createOption": "empty",
+              "createOption": "Empty",
               "diskSizeGB": 100,
               "lun": 0
             }
@@ -154,7 +154,8 @@
             },
             "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]",
             "clusterName": "[parameters('clusterName')]",
-            "sharePath": "[toLower(concat(variables('sharePathPrefix'), parameters('sharePath')))]"
+            "sharePath": "[toLower(concat(variables('sharePathPrefix'), parameters('sharePath')))]",
+            "nodes": [ "[concat(variables('siosVMNamePrefix'),'0')]", "[concat(variables('siosVMNamePrefix'),'1')]" ]
           }
         },
         "protectedSettings": {
@@ -170,9 +171,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), '1')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license",
-        "publisher": "sios_datakeeper",
-        "product": "sios-datakeeper-8"
+        "name": "2.127.20190521",
+        "publisher": "MicrosoftWindowsServer",
+        "product": "WindowsServer"
       },
       "properties": {
         "hardwareProfile": {
@@ -188,9 +189,9 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "sios_datakeeper",
-            "offer": "sios-datakeeper-8",
-            "sku": "bring_your_own_license",
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2008-R2-SP1",
             "version": "latest"
           },
           "osDisk": {
@@ -208,7 +209,7 @@
               },
               "name": "[concat(variables('siosVMNamePrefix'), '1','-datadisk')]",
               "caching": "None",
-              "createOption": "empty",
+              "createOption": "Empty",
               "diskSizeGB": 100,
               "lun": 0
             }
@@ -251,9 +252,7 @@
               "userName": "[parameters('adminUserName')]",
               "password": "PrivateSettingsRef:adminPassword"
             },
-            "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]",
-            "clusterName": "[parameters('clusterName')]",
-            "nodes": [ "[concat(variables('siosVMNamePrefix'),'0')]", "[concat(variables('siosVMNamePrefix'),'1')]" ]
+            "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]"
           }
         },
         "protectedSettings": {
@@ -269,9 +268,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), 'client')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license",
+        "name": "sios-datakeeper-8",
         "publisher": "sios_datakeeper",
-        "product": "sios-datakeeper-8"
+        "product": "bring_your_own_license"
       },
       "properties": {
         "hardwareProfile": {
